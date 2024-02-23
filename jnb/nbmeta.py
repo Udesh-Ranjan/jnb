@@ -1,30 +1,58 @@
 import nbformat
 
 
-class NbMeta:
-    def __int__(self):
+class NBMeta:
+    """
+    NBMeta class provides methods for getting Jupyter Notebook metadata and content.
+
+    Methods:
+        - get_nbformat(): Returns the current notebook format version.
+        - get_nbformat_minor(): Returns the current minor notebook format version.
+        - get_notebook_content(): Returns the notebook content in string format.
+    """
+
+    def __init__(self):
+        """
+        Initializes the NBMeta object.
+        """
         pass
 
     @staticmethod
     def get_nbformat():
+        """
+        Gets the current notebook format version.
+
+        :return: The current notebook format version.
+        :rtype: int
+        """
+
         return nbformat.current_nbformat
 
     @staticmethod
     def get_nbformat_minor():
+        """
+        Gets the current minor notebook format version.
+
+        :return: The current minor notebook format version.
+        :rtype: int
+        """
+
         return nbformat.current_nbformat_minor
 
     @staticmethod
     def get_notebook_content():
-        return """
-{
- "cells": [],
- "metadata": {},""" + f"""
- "nbformat": {NbMeta.get_nbformat()},
- "nbformat_minor": {NbMeta.get_nbformat_minor()}
-""" + '}'
+        """
+        Gets the notebook content in string format.
 
+        :return: The notebook content in string format.
+        :rtype: str
+        """
 
-# print(Manager.get_notebook_content())
-
-# with open(r"C:\Users\devpa\Documents\DevLog\ScalerClass\DataVisualization\KuldeepLectures\test2.ipynb", 'w') as file:
-#     file.write(Manager.get_notebook_content())
+        return (
+                '{\n'
+                ' "cells": [],\n'
+                ' "metadata": {},\n'
+                ' "nbformat": ' + str(NBMeta.get_nbformat()) + ',\n'
+                ' "nbformat_minor": ' + str(NBMeta.get_nbformat_minor()) + '\n'
+                '}'
+        )
